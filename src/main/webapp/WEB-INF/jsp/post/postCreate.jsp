@@ -63,8 +63,9 @@
 			formData.append('content', content); // 없으면 null로 간다.
 			formData.append('file', $('#file')[0].files[0]);
 			
+			
 			// ajax 통신으로 formData에 있는 데이터 전송
-			$.ajax({
+			 $.ajax({
 				// request
 				type:"POST"
 				, url: "/post/create"
@@ -85,7 +86,7 @@
 				, error:function(e) {
 					alert("메모 저장에 실패했습니다");
 				}
-			})
+			}); 
 		});
 	});
 </script>

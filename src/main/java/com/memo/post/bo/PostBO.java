@@ -1,11 +1,14 @@
 package com.memo.post.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.memo.common.FileManagerService;
 import com.memo.post.dao.PostDAO;
+import com.memo.post.model.Post;
 
 @Service
 public class PostBO {
@@ -27,9 +30,9 @@ public class PostBO {
 			imagePath = fileManagerService.saveFile(userLoginId, file);
 		}
 		
-		
 		// db insert
-		// return postDAO.addPost(userId, subject, content, imagePath);
-		return 1;
+		 return postDAO.addPost(userId, subject, content, imagePath);
 	}
+	
+	public List<Post> getPostList(int );
 }
