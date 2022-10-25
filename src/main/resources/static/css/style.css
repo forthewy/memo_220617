@@ -13,6 +13,9 @@ header {
 .sign-in-box {
 	height: 500px;
 }
+.memoTable {
+	border-width: 4px;
+}
 footer {
 	height:100px;
 }

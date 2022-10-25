@@ -1,25 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>.
 <div class="d-flex justify-content-center">
 	<div class="w-50">
 		<h1>글 목록 </h1>
-		<table class="table">
-			<thead>
+		<table class="memoTable table text-center table-bordered">
+			<thead class="table-active">
 				<tr>
-					<th>번호</th>
+					<th>No.</th>
 					<th>제목</th>
 					<th>작성 날짜</th>
 					<th>수정 날짜</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<c:forEach items="${postList}" var="post" varStatus="status">
+					<tr>
+						<td>${fn:length(postList) - status.index}</td>
+						<td>${post.subject}</td>
+						<td><fmt:formatDate value="${post.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+						<td><fmt:formatDate value="${post.updatedAt}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 		

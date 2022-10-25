@@ -23,7 +23,7 @@ public class PostController {
 		@RequestMapping("/post_list_view")
 		public String postListView(HttpSession session, Model model) {
 			
-			Integer userId =  (Integer) session.getAttribute("userId");
+			Integer userId =  (Integer) session.getAttribute("userId"); // 로그인이 풀려있으면 null이기 때문에 Integer
 
 			if (userId == null) {
 				// 로그인이 풀려있으면 로그인 페이지로 리다이렉트
@@ -32,7 +32,8 @@ public class PostController {
 			
 			List<Post> postList = postBO.getPostList(userId);
 			
-			model.addAttribute("viewName", "post/postList"); // 로그인이 풀려있으면 null이기 때문에 Integer
+			model.addAttribute("postList", postList);
+			model.addAttribute("viewName", "post/postList"); 
 			return "template/layout";
 		}
 		

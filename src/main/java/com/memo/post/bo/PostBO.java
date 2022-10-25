@@ -34,5 +34,7 @@ public class PostBO {
 		 return postDAO.addPost(userId, subject, content, imagePath);
 	}
 	
-	public List<Post> getPostList(int );
+	public List<Post> getPostList(int userId) {
+		return postDAO.selectPostList(userId);
+	}
 }
