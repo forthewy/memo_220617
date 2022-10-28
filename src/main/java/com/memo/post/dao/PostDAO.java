@@ -17,11 +17,20 @@ public interface PostDAO {
 			@Param("content") String content,
 			@Param("imagePath") String file);
 	
+	public int updatePost(
+			@Param("postId") int postId, 
+			@Param("userId") int userId, 
+			@Param("subject") String subject,
+			@Param("content") String content,
+			@Param("imagePath") String file);
+
 	public List<Post> selectPostListByUserId(int userId);
 	
 	
 	public Post selectPostByPostIdAndUserId(
 			@Param("postId") int postId,
 			@Param("userId") int userId);
+	
+	public Post selectPostByPostId(int postId);
 	
 }
