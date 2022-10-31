@@ -33,4 +33,6 @@ public interface PostDAO {
 	
 	public Post selectPostByPostId(int postId);
 	
+	public int deletePostByPostId(int postId);
+	
 }

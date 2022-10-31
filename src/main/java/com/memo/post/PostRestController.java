@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ public class PostRestController {
 	private PostBO postBO;
 	
 	/**
-	 * 글 쓰기
+	 * 글 쓰기 API
 	 * @param subject
 	 * @param content
 	 * @param file
@@ -57,6 +58,15 @@ public class PostRestController {
 		return result;
 	}
 	
+	/**
+	 *  글 수정 API
+	 * @param postId
+	 * @param subject
+	 * @param content
+	 * @param file
+	 * @param session
+	 * @return
+	 */
 	@PutMapping("/update")
 	public Map<String, Object> update(
 			@RequestParam("postId") int postId,
@@ -77,6 +87,26 @@ public class PostRestController {
 		} else {
 			result.put("code", 400);
 			result.put("errorMessage", "글 수정에 실패했습니다");
+		}
+		
+		return result;
+	}
+	
+	@DeleteMapping("/delete")
+	public Map<String, Object> delete(
+			@RequestParam("postId") int id) {
+		
+		// DB 삭제
+		int row = postBO.deletePostByPostId(id);
+		
+		// 응답
+		Map<String, Object> result = new HashMap<>();
+		if (row > 0) {
+			result.put("code", 100);
+			result.put("result", "성공");
+		} else {
+			result.put("code", 400);
+			result.put("errorMessage", "글 삭제에 실패했습니다");
 		}
 		
 		return result;
