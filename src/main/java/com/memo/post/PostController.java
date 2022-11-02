@@ -66,9 +66,9 @@ public class PostController {
 		public String postCreateView(HttpSession session, Model model) {
 			Integer userId = (Integer)session.getAttribute("userId");
 			
-			if (userId == null) {
-				return "redirect:/user/sign_in_view";
-			}
+//			if (userId == null) {
+//				return "redirect:/user/sign_in_view";
+//			}
 			
 			model.addAttribute("viewName", "post/postCreate");
 			
